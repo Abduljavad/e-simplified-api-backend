@@ -15,10 +15,10 @@ trait ResponseTrait
             foreach ($data as $key => $value) {
                 $response[$key] = $value;
             }
-        } else {
+        } else if ($data) {
             $response['data'] = $data;
         }
-        
+
         return response($response, $status);
     }
 

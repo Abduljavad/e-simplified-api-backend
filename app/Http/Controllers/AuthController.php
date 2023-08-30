@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $request->validated();
-        
+
         if ($request->avatar) {
             $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
@@ -77,7 +77,7 @@ class AuthController extends Controller
         return $this->successResponse(
             'user successfully  retrieved',
             [
-                'user' => $user->load(['emergency_contacts.relationship'])
+                'user' => $user
             ]
         );
     }
