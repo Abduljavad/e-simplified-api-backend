@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('verification_code')->nullable();
             $table->timestamp('verification_code_expired_at')->nullable();
             $table->string('password');
+            $table->boolean('is_active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
