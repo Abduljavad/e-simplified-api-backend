@@ -37,6 +37,11 @@ class AuthController extends Controller
         if (!$token = auth()->attempt($credentials)) {
             return $this->errorResponse('User-name or Password is incorrect');
         }
+        
+        $user = User::where('email', $request->email)->firstOrFail();
+        if ($user->is_active == false) {
+            return $this->errorResponse('user account is deactivated',403);
+        }
 
         return $this->respondWithToken($token);
     }
