@@ -44,7 +44,7 @@ class SectionController extends Controller
      * @param  \App\Models\section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(section $section)
+    public function show(Section $section)
     {
         return $section->load(['course']);
     }
@@ -56,7 +56,7 @@ class SectionController extends Controller
      * @param  \App\Models\section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatesectionRequest $request, section $section)
+    public function update(UpdatesectionRequest $request, Section $section)
     {
         $section->update($request->validated());
 
@@ -69,7 +69,7 @@ class SectionController extends Controller
      * @param  \App\Models\section  $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy(section $section)
+    public function destroy(Section $section)
     {
         $this->deleteFile($section->icon);
 

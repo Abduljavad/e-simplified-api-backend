@@ -3,8 +3,10 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -41,5 +43,7 @@ Route::controller(UserController::class)->group(function () {
 Route::apiResource('file-upload', FileUploadController::class);
 Route::apiResource('banners', BannerController::class);
 Route::apiResource('categories', CategoryController::class);
-Route::apiResource('courses',CourseController::class);
-Route::apiResource('sections',SectionController::class);
+Route::apiResource('courses', CourseController::class);
+Route::apiResource('sections', SectionController::class);
+Route::apiResource('chapters', ChapterController::class);
+Route::apiResource('notes', NotesController::class);
