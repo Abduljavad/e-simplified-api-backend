@@ -70,13 +70,9 @@ class BannerController extends Controller
     public function destroy(Banner $banner)
     {
         $images = $banner->image;
-        foreach ($images as $image) {
-            $file = FileUpload::find($image['id']);
-            foreach ($file->getMedia() as $mediaItem) {
-                $mediaItem->delete();
-            }
-            $file->delete();
-        }
+        
+        $this->deleteFile($images);
+        
         $banner->delete();
 
         return $this->successResponse('banner deleted successfully');

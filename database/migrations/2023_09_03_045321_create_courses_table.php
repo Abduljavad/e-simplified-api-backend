@@ -26,6 +26,9 @@ return new class extends Migration
             $table->json('course_offerings')->nullable();
             $table->json('course_outcomes')->nullable();
             $table->json('teachers')->nullable();
+            $table->decimal('price')->nullable();
+            $table->decimal('strike_through_price')->nullable();
+            $table->boolean('is_published')->default(1);
             $table->timestamps();
         });
     }

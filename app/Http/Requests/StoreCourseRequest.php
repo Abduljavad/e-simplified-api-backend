@@ -34,6 +34,9 @@ class StoreCourseRequest extends FormRequest
             'course_offerings' => 'array',
             'course_outcomes' => 'array',
             'teachers' => 'array|required',
+            'is_published' => 'boolean|required',
+            'price' => 'required|numeric',
+            'strike_through_price' => 'numeric'
         ];
     }
 }
