@@ -70,11 +70,11 @@ class FileUploadController extends Controller
         if (!$mediaItem) {
             return $this->errorResponse('File not found', 404);
         }
-    
+
         $headers = [
             'Content-Type' => $mediaItem->mime_type,
         ];
-    
+
         return response()->file($mediaItem->getPath(), $headers);
     }
 
