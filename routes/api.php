@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +35,7 @@ Route::controller(UserController::class)->group(function () {
     Route::put('users/{user}', 'update');
     Route::delete('users/{user}', 'destroy');
 });
+
+Route::apiResource('file-upload', FileUploadController::class);
+Route::apiResource('banners', BannerController::class);
+Route::apiResource('categories', CategoryController::class);

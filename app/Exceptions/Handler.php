@@ -2,11 +2,17 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ResponseTrait;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ResponseTrait;
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -46,5 +52,23 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof AuthorizationException) {
+            return $this->errorResponse($exception->getMessage(), 403);
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            return $this->errorResponse('Resource Not Found', 404);
+        }
+        
+        if($exception instanceof RouteNotFoundException || $exception instanceof NotFoundHttpException)
+        {
+            return $this->errorResponse('Route Not Found', 404);
+        }
+
+        return parent::render($request, $exception);
     }
 }
