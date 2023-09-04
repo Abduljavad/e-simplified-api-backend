@@ -9,6 +9,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,4 @@ Route::apiResource('courses', CourseController::class);
 Route::apiResource('sections', SectionController::class);
 Route::apiResource('chapters', ChapterController::class);
 Route::apiResource('notes', NotesController::class);
+Route::apiResource('videos', VideoController::class);
