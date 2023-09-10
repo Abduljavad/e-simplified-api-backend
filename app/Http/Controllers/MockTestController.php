@@ -15,7 +15,7 @@ class MockTestController extends Controller
      */
     public function index()
     {
-        //
+        return "success";
     }
 
     /**
